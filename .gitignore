@@ -1,0 +1,17 @@
+
+# Python environment
+myenv/
+venv/
+.env
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Local database containing registration data
+db.sqlite3
+
+# Editor and OS files
+.vscode/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,107 @@
+/* ── SDT Kalani College – Sports Management Custom Styles ── */
+
+/* NAV */
+nav { margin:0; padding:0; background:#1a237e; }
+nav ul { float:right; padding:0; margin:0; list-style:none; position:relative; background:#1a237e; }
+nav ul li { margin:0; display:inline-block; float:left; }
+nav a { color:#fff; text-transform:capitalize; font-weight:500; font-size:15px;
+  padding:10px 16px; border-radius:4px; letter-spacing:.5px; display:inline-block;
+  transition:.3s; background:#1a237e; text-decoration:none; }
+nav a:hover { background:#e63946; color:#fff; }
+nav a.active { background:#e63946; color:#fff; }
+.nav_w3ls { background:#1a237e; position:sticky; top:0; z-index:999;
+  box-shadow:0 2px 8px rgba(0,0,0,.3); }
+nav ul ul { display:none; position:absolute; top:42px; background:#333;
+  padding:10px; border-radius:4px; z-index:9; }
+nav ul li:hover>ul { display:inherit; }
+nav ul ul li { width:170px; float:none; display:list-item; position:relative; }
+
+/* HEADER BAR */
+.header-bar { background:#fff; padding:10px 0; border-bottom:3px solid #e63946; }
+.header-bar .college-name { color:#1a237e; font-size:1.1rem; font-weight:800;
+  line-height:1.2; }
+.header-bar .college-sub { color:#e63946; font-size:.78rem; font-weight:600; }
+.sports-title { color:#1a237e; font-weight:800; font-size:1.6rem; }
+
+/* HERO IMAGE */
+.hero-img { width:100%; height:520px; object-fit:cover; object-position:center top;
+  display:block; }
+.hero-wrapper { position:relative; }
+.hero-overlay { position:absolute; bottom:0; left:0; right:0;
+  background:linear-gradient(transparent, rgba(13,27,42,.85));
+  padding:30px 40px; color:#fff; }
+.hero-overlay h2 { font-size:2rem; font-weight:800; margin:0; }
+.hero-overlay p  { margin:4px 0 0; color:rgba(255,255,255,.8); }
+
+/* MARQUEE */
+.marquee-bar { background:#e63946; color:#fff; padding:6px 0;
+  font-weight:600; font-size:.9rem; }
+
+/* SECTION */
+.section-title { color:#1a237e; font-weight:800; border-left:4px solid #e63946;
+  padding-left:12px; margin-bottom:20px; }
+.vision-box { border:2px solid #1a237e; border-radius:8px; overflow:hidden;
+  margin-bottom:24px; }
+.vision-header { background:#e63946; color:#fff; padding:10px 16px;
+  font-weight:700; font-size:1rem; }
+.vision-body { padding:20px; font-size:15px; line-height:1.8; }
+
+/* FOOTER */
+.cpy-right { background:#1a237e; color:rgba(255,255,255,.75);
+  padding:16px 0 !important; font-size:.875rem; }
+.cpy-right a { color:#e63946; }
+
+/* EVENT CARDS */
+.event-card { border:2px solid #e8eaf6; border-radius:12px; padding:20px;
+  text-align:center; transition:.2s; background:#fff; }
+.event-card:hover { border-color:#e63946; transform:translateY(-4px);
+  box-shadow:0 8px 24px rgba(0,0,0,.12); }
+.event-card img { height:130px; object-fit:cover; border-radius:8px;
+  margin-bottom:12px; }
+.event-card h5 { color:#1a237e; font-weight:700; }
+.btn-event { background:#e63946; color:#fff; border:none; padding:7px 20px;
+  border-radius:6px; font-weight:600; text-decoration:none; display:inline-block;
+  transition:.2s; }
+.btn-event:hover { background:#1a237e; color:#fff; }
+
+/* CIRCULAR */
+.circular-item { display:flex; align-items:center; justify-content:space-between;
+  border:2px solid #e8eaf6; border-radius:8px; padding:14px 20px;
+  margin-bottom:12px; background:#fff; }
+.circular-item:hover { border-color:#e63946; }
+.circular-badge { background:#e63946; color:#fff; font-size:.7rem; font-weight:700;
+  padding:3px 8px; border-radius:12px; margin-left:8px; }
+.btn-dl { background:#1a237e; color:#fff; padding:6px 18px; border-radius:6px;
+  font-size:.85rem; font-weight:600; text-decoration:none; }
+.btn-dl:hover { background:#e63946; color:#fff; }
+
+/* GALLERY */
+.gallery { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:12px; padding:20px; }
+.gallery a img { width:100%; height:180px; object-fit:cover; border-radius:8px;
+  transition:.3s; }
+.gallery a img:hover { transform:scale(1.04); box-shadow:0 6px 20px rgba(0,0,0,.2); }
+
+/* CONTACT */
+.contact-box { background:#f8f9fa; border-radius:12px; padding:32px; }
+.form-control { border-radius:8px !important; border:2px solid #e8eaf6 !important; }
+.form-control:focus { border-color:#1a237e !important; box-shadow:none !important; }
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero-img { height:240px; }
+  .sports-title { font-size:1.1rem; }
+  nav ul { float:none; }
+  nav ul li { display:block; float:none; }
+}
+
+/* ── New Round Logo Style ── */
+.header-bar .logo-img {
+  height: 72px;
+  width: 72px;
+  object-fit: contain;
+  border-radius: 50%;
+  background: #fff;
+  padding: 2px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.15);
+}

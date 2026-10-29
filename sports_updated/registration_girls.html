@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Girls Registration – SDT Kalani College Sports</title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/sdt_custom.css">
+  <style>
+    .form-status {
+      display:none; padding:12px 16px; border-radius:8px;
+      font-weight:600; font-size:14px; margin-bottom:16px; text-align:center;
+    }
+    .form-status.success {
+      background:#e8f5e9; color:#2e7d32; border:2px solid #a5d6a7; display:block;
+    }
+    .form-status.error {
+      background:#ffebee; color:#c62828; border:2px solid #ef9a9a; display:block;
+    }
+    .btn-sending { opacity:.7; pointer-events:none; }
+    .register-card {
+      background:#fff; border-radius:14px;
+      box-shadow:0 4px 24px rgba(26,35,126,.10);
+      padding:36px 32px; margin-bottom:32px;
+    }
+    .register-card h4 { color:#880e4f; font-weight:700; margin-bottom:6px; }
+    .register-card .subtitle { color:#666; font-size:13px; margin-bottom:20px; }
+    .register-card label { font-weight:600; color:#333; margin-bottom:4px; display:block; }
+    .register-card input, .register-card select {
+      width:100%; padding:9px 13px; border:1.5px solid #f48fb1;
+      border-radius:7px; font-size:14px; margin-bottom:14px;
+      outline:none; transition:border .2s;
+    }
+    .register-card input:focus, .register-card select:focus { border-color:#880e4f; }
+    .info-panel { background:#880e4f; color:#fff; border-radius:12px; padding:28px; }
+    .info-panel h4 { font-weight:800; margin-bottom:20px; border-bottom:2px solid #f06292; padding-bottom:10px; }
+    .badge-accent { background:#e91e63; color:#fff; border-radius:12px; padding:20px; margin-top:16px; text-align:center; }
+    .badge-accent h5 { font-weight:800; }
+    .btn-girls {
+      display:inline-block; background:#880e4f; color:#fff;
+      padding:10px 32px; font-size:1rem; border:none;
+      border-radius:8px; cursor:pointer; font-weight:700;
+      transition:background .2s;
+    }
+    .btn-girls:hover { background:#ad1457; }
+  </style>
+</head>
+<body>
+
+<div class="header-bar">
+  <div class="container-fluid">
+    <div class="row align-items-center">
+      <div class="col-sm-2 col-3"><img src="images/kalani_logo.jpg" alt="Kalani College Logo" class="img-responsive logo-img"></div>
+      <div class="col-sm-7 col-6">
+        <div class="college-name">SDT Kalani College of Arts, Commerce &amp; Science</div>
+        <div class="college-sub">Affiliated to University of Mumbai &nbsp;|&nbsp; Ulhasnagar – 421002</div>
+      </div>
+      <div class="col-sm-3 col-3 text-right"><span class="sports-title">Sports Management</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="nav_w3ls">
+  <nav>
+    <label for="drop" class="toggle">Menu</label>
+    <ul class="menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="event.html">Events</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="circular.html">Circular</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+  </nav>
+</div>
+
+<div class="marquee-bar">
+  <marquee>🌸 Girls Registration Open – SDT Kalani College Sports Department | Fill all details correctly | Email: deysubham2004@gmail.com</marquee>
+</div>
+<br>
+
+<div class="container">
+  <h3 class="section-title">Girls Sports Registration</h3>
+  <div class="row">
+
+    <div class="col-md-7">
+      <div class="register-card">
+        <h4>👧 Register as a Female Participant</h4>
+        <p class="subtitle">Registration details will be sent to <strong>deysubham2004@gmail.com</strong></p>
+
+        <div id="form-success" class="form-status success">
+          ✅ Registration submitted! We will get back to you shortly.
+        </div>
+        <div id="form-error" class="form-status error">
+          ❌ Something went wrong. Please try again or contact us directly.
+        </div>
+
+        <form id="registerForm" action="http://127.0.0.1:8000/api/register/" method="POST">
+          <input type="hidden" name="registration_type" value="Girls Registration">
+          
+          <!-- Single-letter key 'F' matching GENDER_CHOICES -->
+          <input type="hidden" name="gender" value="F">
+
+          <label for="team_name">Team Name *</label>
+          <input type="text" id="team_name" name="team_name" placeholder="Enter your team name" required>
+
+          <label for="full_name">Full Name *</label>
+          <input type="text" id="full_name" name="full_name" placeholder="Enter your full name" required>
+
+          <label for="phone">Contact Number *</label>
+          <input type="tel" id="phone" name="phone" placeholder="Enter your 10-digit mobile number" pattern="[0-9]{10}" required>
+
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com" required>
+
+          <label for="branch_sem">Branch &amp; Semester *</label>
+          <input type="text" id="branch_sem" name="branch_sem" placeholder="e.g. B.Com Sem 4 / BSc IT Sem 2" required>
+
+          <label for="age">Age</label>
+          <input type="number" id="age" name="age" placeholder="Enter your age (optional)" min="15" max="50">
+
+          <label for="sport">Sport / Event *</label>
+          <select id="sport" name="sport" required>
+            <option value="" disabled selected>-- Select a Sport --</option>
+            <option value="cricket">Cricket</option>
+            <option value="football">Football</option>
+            <option value="volleyball">Volleyball</option>
+            <option value="badminton">Badminton</option>
+            <option value="chess">Chess</option>
+            <option value="kabaddi">Kabaddi</option>
+            <option value="carrom">Carrom</option>
+          </select>
+
+          <button type="submit" id="submitBtn" class="btn-girls" style="margin-top:6px;">
+            🌸 Register Now
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-md-5">
+      <div class="info-panel">
+        <h4>Registration Information</h4>
+        <p><strong>🏫 College:</strong><br>SDT Kalani College of Arts, Commerce &amp; Science</p>
+        <p><strong>📍 Address:</strong><br>Ulhasnagar, Maharashtra – 421002</p>
+        <p><strong>📧 Email:</strong><br>deysubham2004@gmail.com</p>
+        <p><strong>📞 Phone:</strong><br>8455894347</p>
+        <p><strong>🕐 Office Hours:</strong><br>Monday – Saturday<br>9:00 AM – 5:00 PM</p>
+        <p><strong>📋 Note:</strong><br>Fill all details correctly. Invalid entries may lead to disqualification.</p>
+      </div>
+      <div class="badge-accent">
+        <h5>Sports Coordinator</h5>
+        <p style="margin:0;">gaurav pawar</p>
+        <p style="margin:4px 0;font-size:.9rem;opacity:.85;">Department of Physical Education</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<br><br>
+<div class="cpy-right text-center">
+  <p>&copy; 2026 SDT Kalani College Sports Management. All rights reserved. | Developed by gaurav pawar</p>
+</div>
+
+<script src="js/lightbox-plus-jquery.min.js"></script>
+<script>
+const form    = document.getElementById('registerForm');
+const btn     = document.getElementById('submitBtn');
+const success = document.getElementById('form-success');
+const error   = document.getElementById('form-error');
+
+form.addEventListener('submit', async function(e) {
+  e.preventDefault();
+  success.style.display = 'none';
+  error.style.display   = 'none';
+  btn.textContent = '⏳ Submitting...';
+  btn.classList.add('btn-sending');
+
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (response.ok) {
+      success.style.display = 'block';
+      form.reset();
+      btn.textContent = '✅ Registered!';
+      setTimeout(() => { btn.textContent = '🌸 Register Now'; btn.classList.remove('btn-sending'); }, 3000);
+    } else { throw new Error(); }
+  } catch {
+    error.style.display = 'block';
+    btn.textContent = '🌸 Register Now';
+    btn.classList.remove('btn-sending');
+  }
+});
+</script>
+</body>
+</html>
