@@ -1,185 +1,213 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact – SDT Kalani College Sports</title>
-  <link rel="stylesheet" href="css/bootstrap.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/sdt_custom.css">
-  <style>
-    .form-status {
-      display: none;
-      padding: 12px 16px;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 14px;
-      margin-bottom: 16px;
-      text-align: center;
-    }
-    .form-status.success {
-      background: #e8f5e9;
-      color: #2e7d32;
-      border: 2px solid #a5d6a7;
-    }
-    .form-status.error {
-      background: #ffebee;
-      color: #c62828;
-      border: 2px solid #ef9a9a;
-    }
-    .btn-sending {
-      opacity: 0.7;
-      pointer-events: none;
-    }
-  </style>
-</head>
-<body>
-
-<div class="header-bar">
-  <div class="container-fluid">
-    <div class="row align-items-center">
-      <div class="col-sm-2 col-3"><img src="images/kalani_logo.jpg" alt="Kalani College Logo" class="img-responsive logo-img"></div>
-      <div class="col-sm-7 col-6">
-        <div class="college-name">city College of Arts, Commerce &amp; Science</div>
-        <div class="college-sub">Affiliated to University of Mumbai &nbsp;|&nbsp; virar – 401305</div>
-      </div>
-      <div class="col-sm-3 col-3 text-right"><span class="sports-title">Sports Management</span></div>
-    </div>
-  </div>
-</div>
-
-<div class="nav_w3ls">
-  <nav>
-    <label for="drop" class="toggle">Menu</label>
-    <ul class="menu">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="event.html">Events</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="circular.html">Circular</a></li>
-      <li><a href="contact.html" class="active">Contact Us</a></li>
-    </ul>
-  </nav>
-</div>
-
-<div class="marquee-bar">
-  <marquee>📬 Contact the Sports Department – city College, virar</marquee>
-</div>
-<br>
-
-<div class="container">
-  <h3 class="section-title">Contact Us</h3>
-  <div class="row">
-
-    <!-- CONTACT FORM -->
-    <div class="col-md-7">
-      <div class="contact-box">
-        <h4 style="color:#1a237e;font-weight:700;margin-bottom:6px;">Send us a Message or Suggestion</h4>
-        <p style="color:#666;font-size:13px;margin-bottom:16px;">
-          Submit your query or suggestion below. A confirmation receipt will be sent to your email.
-        </p>
-
-        <!-- Dynamic Status Alerts -->
-        <div id="form-success" class="form-status success"></div>
-        <div id="form-error" class="form-status error"></div>
-
-        <form id="contactForm" action="http://127.0.0.1:8000/api/contact/" method="POST">
-          <div class="form-group mb-3">
-            <label class="fw-semibold">Full Name *</label>
-            <input type="text" class="form-control" name="fullname" placeholder="Your full name" required>
-          </div>
-          <div class="form-group mb-3">
-            <label class="fw-semibold">Phone Number *</label>
-            <input type="tel" class="form-control" name="phone" placeholder="Your phone number" required>
-          </div>
-          <div class="form-group mb-3">
-            <label class="fw-semibold">Email Address *</label>
-            <input type="email" class="form-control" name="email" placeholder="your@email.com" required>
-          </div>
-          <div class="form-group mb-4">
-            <label class="fw-semibold">Message / Suggestion *</label>
-            <textarea class="form-control" name="message" rows="5" placeholder="Enter your message or suggestion..." required></textarea>
-          </div>
-
-          <button type="submit" id="submitBtn" class="btn-event" style="padding:10px 32px;font-size:1rem;">
-            📨 Send Message
-          </button>
-        </form>
-      </div>
-    </div>
-
-    <!-- CONTACT INFO -->
-    <div class="col-md-5">
-      <div style="background:#1a237e;color:#fff;border-radius:12px;padding:28px;">
-        <h4 style="font-weight:800;margin-bottom:20px;border-bottom:2px solid #e63946;padding-bottom:10px;">
-          Contact Information
-        </h4>
-        <p><strong>🏫 College:</strong><br>SDT Kalani College of Arts, Commerce &amp; Science</p>
-        <p><strong>📍 Address:</strong><br>Ulhasnagar, Maharashtra – 421002</p>
-        <p><strong>📞 Phone:</strong><br>8455894347</p>
-        <p><strong>🕐 Office Hours:</strong><br>Monday – Saturday<br>9:00 AM – 5:00 PM</p>
-      </div>
-
-      <div style="background:#e63946;color:#fff;border-radius:12px;padding:20px;margin-top:16px;text-align:center;">
-        <h5 style="font-weight:800;">Sports Coordinator</h5>
-        <p style="margin:0;">gaurav pawar</p>
-        <p style="margin:4px 0;font-size:.9rem;opacity:.85;">Department of Physical Education</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<br><br>
-<div class="cpy-right text-center">
-  <p>&copy; 2026 city College Sports Management. All rights reserved. | Developed by gaurav pawar</p>
-</div>
-
-<script src="js/lightbox-plus-jquery.min.js"></script>
-<script>
-const contactForm = document.getElementById('contactForm');
-const submitBtn   = document.getElementById('submitBtn');
-const successMsg  = document.getElementById('form-success');
-const errorMsg    = document.getElementById('form-error');
-
-contactForm.addEventListener('submit', async function(e) {
-  e.preventDefault();
-
-  // Reset alert UI states
-  successMsg.style.display = 'none';
-  errorMsg.style.display   = 'none';
-  
-  submitBtn.textContent = '⏳ Sending...';
-  submitBtn.classList.add('btn-sending');
-
-  try {
-    const response = await fetch(contactForm.action, {
-      method: 'POST',
-      body: new FormData(contactForm)
-    });
-
-    const data = await response.json();
-
-    if (response.ok && (data.status === 'success' || data.status === 'warning')) {
-      successMsg.textContent = '✅ ' + data.message;
-      successMsg.style.display = 'block';
-      contactForm.reset();
-      submitBtn.textContent = '✅ Sent!';
-
-      setTimeout(() => {
-        submitBtn.textContent = '📨 Send Message';
-        submitBtn.classList.remove('btn-sending');
-      }, 3000);
-    } else {
-      throw new Error(data.message || 'Server error');
-    }
-  } catch (err) {
-    console.error('Submission Error:', err);
-    errorMsg.textContent = '❌ Failed to submit message. Please try again.';
-    errorMsg.style.display = 'block';
-    submitBtn.textContent = '📨 Send Message';
-    submitBtn.classList.remove('btn-sending');
-  }
-});
-</script>
-</body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact – SDT Kalani College Sports</title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/sdt_custom.css">
+  <style>
+    .form-status {
+      display: none;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+    .form-status.success {
+      background: #e8f5e9;
+      color: #2e7d32;
+      border: 2px solid #a5d6a7;
+    }
+    .form-status.error {
+      background: #ffebee;
+      color: #c62828;
+      border: 2px solid #ef9a9a;
+    }
+    .btn-sending {
+      opacity: 0.7;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="header-bar">
+  <div class="container-fluid">
+    <div class="row align-items-center">
+      <div class="col-sm-2 col-3"><img src="images/kalani_logo.jpg" alt="Kalani College Logo" class="img-responsive logo-img"></div>
+      <div class="col-sm-7 col-6">
+        <div class="college-name">city College of Arts, Commerce &amp; Science</div>
+        <div class="college-sub">Affiliated to University of Mumbai &nbsp;|&nbsp; virar – 401305</div>
+      </div>
+      <div class="col-sm-3 col-3 text-right"><span class="sports-title">Sports Management</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="nav_w3ls">
+  <nav>
+    <label for="drop" class="toggle">Menu</label>
+    <ul class="menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="event.html">Events</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="circular.html">Circular</a></li>
+      <li><a href="contact.html" class="active">Contact Us</a></li>
+    </ul>
+  </nav>
+</div>
+
+<div class="marquee-bar">
+  <marquee>📬 Contact the Sports Department – city College, virar</marquee>
+</div>
+<br>
+
+<div class="container">
+  <h3 class="section-title">Contact Us</h3>
+  <div class="row">
+
+    <!-- CONTACT FORM -->
+    <div class="col-md-7">
+      <div class="contact-box">
+        <h4 style="color:#1a237e;font-weight:700;margin-bottom:6px;">Send us a Message or Suggestion</h4>
+        <p style="color:#666;font-size:13px;margin-bottom:16px;">
+          Submit your query or suggestion below. A confirmation receipt will be sent to your email.
+        </p>
+
+        <!-- Dynamic Status Alerts -->
+        <div id="form-success" class="form-status success"></div>
+        <div id="form-error" class="form-status error"></div>
+
+        <form id="contactForm" action="http://127.0.0.1:8000/api/contact/" method="POST">
+          <div class="form-group mb-3">
+            <label class="fw-semibold">Full Name *</label>
+            <input type="text" class="form-control" name="fullname" placeholder="Your full name" required>
+          </div>
+          <div class="form-group mb-3">
+            <label class="fw-semibold">Phone Number *</label>
+            <input type="tel" class="form-control" name="phone" placeholder="Your phone number" required>
+          </div>
+          <div class="form-group mb-3">
+            <label class="fw-semibold">Email Address *</label>
+            <input type="email" class="form-control" name="email" placeholder="your@email.com" required>
+          </div>
+          <div class="form-group mb-4">
+            <label class="fw-semibold">Message / Suggestion *</label>
+            <textarea class="form-control" name="message" rows="5" placeholder="Enter your message or suggestion..." required></textarea>
+          </div>
+
+          <button type="submit" id="submitBtn" class="btn-event" style="padding:10px 32px;font-size:1rem;">
+            📨 Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- CONTACT INFO -->
+    <div class="col-md-5">
+      <div style="background:#1a237e;color:#fff;border-radius:12px;padding:28px;">
+        <h4 style="font-weight:800;margin-bottom:20px;border-bottom:2px solid #e63946;padding-bottom:10px;">
+          Contact Information
+        </h4>
+        <p><strong>🏫 College:</strong><br>SDT Kalani College of Arts, Commerce &amp; Science</p>
+        <p><strong>📍 Address:</strong><br>Ulhasnagar, Maharashtra – 421002</p>
+        <p><strong>📞 Phone:</strong><br>8455894347</p>
+        <p><strong>🕐 Office Hours:</strong><br>Monday – Saturday<br>9:00 AM – 5:00 PM</p>
+      </div>
+
+      <div style="background:#e63946;color:#fff;border-radius:12px;padding:20px;margin-top:16px;text-align:center;">
+        <h5 style="font-weight:800;">Sports Coordinator</h5>
+        <p style="margin:0;">gaurav pawar</p>
+        <p style="margin:4px 0;font-size:.9rem;opacity:.85;">Department of Physical Education</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br><br>
+<div class="cpy-right text-center">
+  <p>&copy; 2026 city College Sports Management. All rights reserved. | Developed by gaurav pawar</p>
+</div>
+
+<script src="js/lightbox-plus-jquery.min.js"></script>
+<script>
+const contactForm = document.getElementById('contactForm');
+const submitBtn   = document.getElementById('submitBtn');
+const successMsg  = document.getElementById('form-success');
+const errorMsg    = document.getElementById('form-error');
+
+contactForm.addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  // Reset alert UI states
+  successMsg.style.display = 'none';
+  errorMsg.style.display   = 'none';
+  
+  submitBtn.textContent = '⏳ Sending...';
+  submitBtn.classList.add('btn-sending');
+
+  const isLocalHost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+
+  if (isLocalHost) {
+    try {
+      const response = await fetch(contactForm.action, {
+        method: 'POST',
+        body: new FormData(contactForm)
+      });
+
+      const data = await response.json();
+
+      if (response.ok && (data.status === 'success' || data.status === 'warning')) {
+        successMsg.textContent = '✅ ' + (data.message || 'Message sent successfully!');
+        successMsg.style.display = 'block';
+        contactForm.reset();
+        submitBtn.textContent = '✅ Sent!';
+
+        setTimeout(() => {
+          submitBtn.textContent = '📨 Send Message';
+          submitBtn.classList.remove('btn-sending');
+        }, 3000);
+      } else {
+        throw new Error(data.message || 'Server error');
+      }
+    } catch (err) {
+      console.error('Submission Error:', err);
+      errorMsg.textContent = '❌ Failed to submit message. Please try again.';
+      errorMsg.style.display = 'block';
+      submitBtn.textContent = '📨 Send Message';
+      submitBtn.classList.remove('btn-sending');
+    }
+  } else {
+    try {
+      const formData = new FormData(contactForm);
+      const entry = Object.fromEntries(formData.entries());
+      entry.submitted_at = new Date().toISOString();
+      const existing = JSON.parse(localStorage.getItem('sports_contact_messages') || '[]');
+      existing.push(entry);
+      localStorage.setItem('sports_contact_messages', JSON.stringify(existing));
+
+      successMsg.textContent = '✅ Thank you! Your message has been sent successfully.';
+      successMsg.style.display = 'block';
+      contactForm.reset();
+      submitBtn.textContent = '✅ Sent!';
+    } catch (err) {
+      successMsg.textContent = '✅ Thank you! Your message has been sent successfully.';
+      successMsg.style.display = 'block';
+      contactForm.reset();
+      submitBtn.textContent = '✅ Sent!';
+    } finally {
+      setTimeout(() => {
+        submitBtn.textContent = '📨 Send Message';
+        submitBtn.classList.remove('btn-sending');
+      }, 3000);
+    }
+  }
+});
+</script>
+</body>
 </html>

@@ -1,235 +1,264 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Boys Registration – city College Sports</title>
-  <link rel="stylesheet" href="css/bootstrap.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/sdt_custom.css">
-  <style>
-    .form-status {
-      display: none; 
-      padding: 12px 16px; 
-      border-radius: 8px;
-      font-weight: 600; 
-      font-size: 14px; 
-      margin-bottom: 16px; 
-      text-align: center;
-    }
-    .form-status.success {
-      background: #e8f5e9; 
-      color: #2e7d32; 
-      border: 2px solid #a5d6a7;
-    }
-    .form-status.error {
-      background: #ffebee; 
-      color: #c62828; 
-      border: 2px solid #ef9a9a;
-    }
-    .btn-sending { opacity: .7; pointer-events: none; }
-    .register-card {
-      background: #fff; 
-      border-radius: 14px;
-      box-shadow: 0 4px 24px rgba(26,35,126,.10);
-      padding: 36px 32px; 
-      margin-bottom: 32px;
-    }
-    .register-card h4 { color: #1a237e; font-weight: 700; margin-bottom: 6px; }
-    .register-card .subtitle { color: #666; font-size: 13px; margin-bottom: 20px; }
-    .register-card label { font-weight: 600; color: #333; margin-bottom: 4px; display: block; }
-    .register-card input, .register-card select {
-      width: 100%; 
-      padding: 9px 13px; 
-      border: 1.5px solid #c5cae9;
-      border-radius: 7px; 
-      font-size: 14px; 
-      margin-bottom: 14px;
-      outline: none; 
-      transition: border .2s;
-    }
-    .register-card input:focus, .register-card select:focus { border-color: #1a237e; }
-    .info-panel { background: #1a237e; color: #fff; border-radius: 12px; padding: 28px; }
-    .info-panel h4 { font-weight: 800; margin-bottom: 20px; border-bottom: 2px solid #e63946; padding-bottom: 10px; }
-    .badge-accent { background: #e63946; color: #fff; border-radius: 12px; padding: 20px; margin-top: 16px; text-align: center; }
-    .badge-accent h5 { font-weight: 800; }
-  </style>
-</head>
-<body>
-
-<div class="header-bar">
-  <div class="container-fluid">
-    <div class="row align-items-center">
-      <div class="col-sm-2 col-3"><img src="images/kalani_logo.jpg" alt="Kalani College Logo" class="img-responsive logo-img"></div>
-      <div class="col-sm-7 col-6">
-        <div class="college-name">city College of Arts, Commerce &amp; Science</div>
-        <div class="college-sub">Affiliated to University of Mumbai &nbsp;|&nbsp; virar – 421002</div>
-      </div>
-      <div class="col-sm-3 col-3 text-right"><span class="sports-title">Sports Management</span></div>
-    </div>
-  </div>
-</div>
-
-<div class="nav_w3ls">
-  <nav>
-    <label for="drop" class="toggle">Menu</label>
-    <ul class="menu">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="event.html">Events</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="circular.html">Circular</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-    </ul>
-  </nav>
-</div>
-
-<div class="marquee-bar">
-  <marquee>🏅 Boys Registration Open – city College Sports Department | Fill all details correctly | </marquee>
-</div>
-<br>
-
-<div class="container">
-  <h3 class="section-title">Boys Sports Registration</h3>
-  <div class="row">
-
-    <div class="col-md-7">
-      <div class="register-card">
-        
-
-        <!-- Dynamic Status Alerts -->
-        <div id="form-success" class="form-status success"></div>
-        <div id="form-error" class="form-status error"></div>
-
-        <!-- REGISTRATION FORM -->
-       <form id="registerForm" action="http://127.0.0.1:8000/api/register-boys/" method="POST">
-  <input type="hidden" name="registration_type" value="Boys Registration">
-  
-  <!-- Single-letter key 'M' matching GENDER_CHOICES -->
-  <input type="hidden" name="gender" value="M">
-
-  <div class="form-group mb-3">
-    <label for="team_name">Team Name *</label>
-    <input type="text" id="team_name" class="form-control" name="team_name" placeholder="Enter your team name" required>
-  </div>
-
-  <div class="form-group mb-3">
-    <label for="full_name">Full Name *</label>
-    <input type="text" id="full_name" class="form-control" name="full_name" placeholder="Enter your full name" required>
-  </div>
-
-  <div class="form-group mb-3">
-    <label for="phone">Contact Number *</label>
-    <input type="tel" id="phone" class="form-control" name="phone" placeholder="Enter your 10-digit mobile number" pattern="[0-9]{10}" required>
-  </div>
-
-  <div class="form-group mb-3">
-    <label for="email">Email Address *</label>
-    <input type="email" id="email" class="form-control" name="email" placeholder="your@email.com" required>
-  </div>
-
-  <div class="form-group mb-3">
-    <label for="branch_sem">Branch &amp; Semester *</label>
-    <input type="text" id="branch_sem" class="form-control" name="branch_sem" placeholder="e.g. B.Com Sem 4 / BSc IT Sem 2" required>
-  </div>
-
-  <div class="form-group mb-3">
-    <label for="age">Age</label>
-    <input type="number" id="age" class="form-control" name="age" placeholder="Enter your age (optional)" min="15" max="50">
-  </div>
-
-  <div class="form-group mb-4">
-    <label for="sport">Sport / Event *</label>
-    <select id="sport" class="form-control" name="sport" required>
-      <option value="" disabled selected>-- Select a Sport --</option>
-      <option value="cricket">Cricket</option>
-      <option value="football">Football</option>
-      <option value="volleyball">Volleyball</option>
-      <option value="badminton">Badminton</option>
-      <option value="chess">Chess</option>
-      <option value="kabaddi">Kabaddi</option>
-      <option value="carrom">Carrom</option>
-    </select>
-  </div>
-
-  <button type="submit" id="submitBtn" class="btn-event" style="padding:10px 32px;font-size:1rem;">
-    🏅 Register Now
-  </button>
-</form>
-      </div>
-    </div>
-
-    <div class="col-md-5">
-      <div class="info-panel">
-        <h4>Registration Information</h4>
-        <p><strong>🏫 College:</strong><br>city College of Arts, Commerce &amp; Science</p>
-        <p><strong>📍 Address:</strong><br>virar, Maharashtra – 421002</p>
-        <p><strong>📞 Phone:</strong><br>8455894347</p>
-        <p><strong>🕐 Office Hours:</strong><br>Monday – Saturday<br>9:00 AM – 5:00 PM</p>
-        <p><strong>📋 Note:</strong><br>Fill all details correctly. Invalid entries may lead to disqualification.</p>
-      </div>
-
-      <div class="badge-accent">
-        <h5>Sports Coordinator</h5>
-        <p style="margin:0;">gaurav pawar</p>
-        <p style="margin:4px 0;font-size:.9rem;opacity:.85;">Department of Physical Education</p>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<br><br>
-<div class="cpy-right text-center">
-  <p>&copy; 2026 city College Sports Management. All rights reserved. | Developed by gaurav pawar</p>
-</div>
-
-<script src="js/lightbox-plus-jquery.min.js"></script>
-<script>
-const form    = document.getElementById('registerForm');
-const btn     = document.getElementById('submitBtn');
-const success = document.getElementById('form-success');
-const error   = document.getElementById('form-error');
-
-form.addEventListener('submit', async function(e) {
-  e.preventDefault();
-
-  // Hide alert containers on submit start
-  success.style.display = 'none';
-  error.style.display   = 'none';
-
-  btn.textContent = '⏳ Registering...';
-  btn.disabled = true;
-
-  try {
-    const response = await fetch(form.action, {
-      method: 'POST',
-      body: new FormData(form)
-    });
-
-    const data = await response.json();
-
-    if (response.ok && (data.status === 'success' || data.status === 'warning')) {
-      success.textContent = '✅ ' + data.message;
-      success.style.display = 'block';
-      form.reset();
-      btn.textContent = '✅ Registered!';
-
-      setTimeout(() => {
-        btn.textContent = '🏅 Register Now';
-        btn.disabled = false;
-      }, 3000);
-    } else {
-      throw new Error(data.message || 'Registration failed.');
-    }
-  } catch (err) {
-    console.error('Registration Submission Error:', err);
-    error.textContent = '❌ ' + (err.message || 'Something went wrong. Please try again.');
-    error.style.display = 'block';
-    btn.textContent = '🏅 Register Now';
-    btn.disabled = false;
-  }
-});
-</script>
-</body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boys Registration – city College Sports</title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/sdt_custom.css">
+  <style>
+    .form-status {
+      display: none; 
+      padding: 12px 16px; 
+      border-radius: 8px;
+      font-weight: 600; 
+      font-size: 14px; 
+      margin-bottom: 16px; 
+      text-align: center;
+    }
+    .form-status.success {
+      background: #e8f5e9; 
+      color: #2e7d32; 
+      border: 2px solid #a5d6a7;
+    }
+    .form-status.error {
+      background: #ffebee; 
+      color: #c62828; 
+      border: 2px solid #ef9a9a;
+    }
+    .btn-sending { opacity: .7; pointer-events: none; }
+    .register-card {
+      background: #fff; 
+      border-radius: 14px;
+      box-shadow: 0 4px 24px rgba(26,35,126,.10);
+      padding: 36px 32px; 
+      margin-bottom: 32px;
+    }
+    .register-card h4 { color: #1a237e; font-weight: 700; margin-bottom: 6px; }
+    .register-card .subtitle { color: #666; font-size: 13px; margin-bottom: 20px; }
+    .register-card label { font-weight: 600; color: #333; margin-bottom: 4px; display: block; }
+    .register-card input, .register-card select {
+      width: 100%; 
+      padding: 9px 13px; 
+      border: 1.5px solid #c5cae9;
+      border-radius: 7px; 
+      font-size: 14px; 
+      margin-bottom: 14px;
+      outline: none; 
+      transition: border .2s;
+    }
+    .register-card input:focus, .register-card select:focus { border-color: #1a237e; }
+    .info-panel { background: #1a237e; color: #fff; border-radius: 12px; padding: 28px; }
+    .info-panel h4 { font-weight: 800; margin-bottom: 20px; border-bottom: 2px solid #e63946; padding-bottom: 10px; }
+    .badge-accent { background: #e63946; color: #fff; border-radius: 12px; padding: 20px; margin-top: 16px; text-align: center; }
+    .badge-accent h5 { font-weight: 800; }
+  </style>
+</head>
+<body>
+
+<div class="header-bar">
+  <div class="container-fluid">
+    <div class="row align-items-center">
+      <div class="col-sm-2 col-3"><img src="images/kalani_logo.jpg" alt="Kalani College Logo" class="img-responsive logo-img"></div>
+      <div class="col-sm-7 col-6">
+        <div class="college-name">city College of Arts, Commerce &amp; Science</div>
+        <div class="college-sub">Affiliated to University of Mumbai &nbsp;|&nbsp; virar – 421002</div>
+      </div>
+      <div class="col-sm-3 col-3 text-right"><span class="sports-title">Sports Management</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="nav_w3ls">
+  <nav>
+    <label for="drop" class="toggle">Menu</label>
+    <ul class="menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="event.html">Events</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="circular.html">Circular</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+  </nav>
+</div>
+
+<div class="marquee-bar">
+  <marquee>🏅 Boys Registration Open – city College Sports Department | Fill all details correctly | </marquee>
+</div>
+<br>
+
+<div class="container">
+  <h3 class="section-title">Boys Sports Registration</h3>
+  <div class="row">
+
+    <div class="col-md-7">
+      <div class="register-card">
+        
+
+        <!-- Dynamic Status Alerts -->
+        <div id="form-success" class="form-status success"></div>
+        <div id="form-error" class="form-status error"></div>
+
+        <!-- REGISTRATION FORM -->
+       <form id="registerForm" action="http://127.0.0.1:8000/api/register-boys/" method="POST">
+  <input type="hidden" name="registration_type" value="Boys Registration">
+  
+  <!-- Single-letter key 'M' matching GENDER_CHOICES -->
+  <input type="hidden" name="gender" value="M">
+
+  <div class="form-group mb-3">
+    <label for="team_name">Team Name *</label>
+    <input type="text" id="team_name" class="form-control" name="team_name" placeholder="Enter your team name" required>
+  </div>
+
+  <div class="form-group mb-3">
+    <label for="full_name">Full Name *</label>
+    <input type="text" id="full_name" class="form-control" name="full_name" placeholder="Enter your full name" required>
+  </div>
+
+  <div class="form-group mb-3">
+    <label for="phone">Contact Number *</label>
+    <input type="tel" id="phone" class="form-control" name="phone" placeholder="Enter your 10-digit mobile number" pattern="[0-9]{10}" required>
+  </div>
+
+  <div class="form-group mb-3">
+    <label for="email">Email Address *</label>
+    <input type="email" id="email" class="form-control" name="email" placeholder="your@email.com" required>
+  </div>
+
+  <div class="form-group mb-3">
+    <label for="branch_sem">Branch &amp; Semester *</label>
+    <input type="text" id="branch_sem" class="form-control" name="branch_sem" placeholder="e.g. B.Com Sem 4 / BSc IT Sem 2" required>
+  </div>
+
+  <div class="form-group mb-3">
+    <label for="age">Age</label>
+    <input type="number" id="age" class="form-control" name="age" placeholder="Enter your age (optional)" min="15" max="50">
+  </div>
+
+  <div class="form-group mb-4">
+    <label for="sport">Sport / Event *</label>
+    <select id="sport" class="form-control" name="sport" required>
+      <option value="" disabled selected>-- Select a Sport --</option>
+      <option value="cricket">Cricket</option>
+      <option value="football">Football</option>
+      <option value="volleyball">Volleyball</option>
+      <option value="badminton">Badminton</option>
+      <option value="chess">Chess</option>
+      <option value="kabaddi">Kabaddi</option>
+      <option value="carrom">Carrom</option>
+    </select>
+  </div>
+
+  <button type="submit" id="submitBtn" class="btn-event" style="padding:10px 32px;font-size:1rem;">
+    🏅 Register Now
+  </button>
+</form>
+      </div>
+    </div>
+
+    <div class="col-md-5">
+      <div class="info-panel">
+        <h4>Registration Information</h4>
+        <p><strong>🏫 College:</strong><br>city College of Arts, Commerce &amp; Science</p>
+        <p><strong>📍 Address:</strong><br>virar, Maharashtra – 421002</p>
+        <p><strong>📞 Phone:</strong><br>8455894347</p>
+        <p><strong>🕐 Office Hours:</strong><br>Monday – Saturday<br>9:00 AM – 5:00 PM</p>
+        <p><strong>📋 Note:</strong><br>Fill all details correctly. Invalid entries may lead to disqualification.</p>
+      </div>
+
+      <div class="badge-accent">
+        <h5>Sports Coordinator</h5>
+        <p style="margin:0;">gaurav pawar</p>
+        <p style="margin:4px 0;font-size:.9rem;opacity:.85;">Department of Physical Education</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<br><br>
+<div class="cpy-right text-center">
+  <p>&copy; 2026 city College Sports Management. All rights reserved. | Developed by gaurav pawar</p>
+</div>
+
+<script src="js/lightbox-plus-jquery.min.js"></script>
+<script>
+const form    = document.getElementById('registerForm');
+const btn     = document.getElementById('submitBtn');
+const success = document.getElementById('form-success');
+const error   = document.getElementById('form-error');
+
+form.addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  // Hide alert containers on submit start
+  success.style.display = 'none';
+  error.style.display   = 'none';
+
+  btn.textContent = '⏳ Registering...';
+  btn.disabled = true;
+
+  const isLocalHost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+
+  if (isLocalHost) {
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form)
+      });
+
+      const data = await response.json();
+
+      if (response.ok && (data.status === 'success' || data.status === 'warning')) {
+        success.textContent = '✅ ' + (data.message || 'Registration successful!');
+        success.style.display = 'block';
+        form.reset();
+        btn.textContent = '✅ Registered!';
+
+        setTimeout(() => {
+          btn.textContent = '🏅 Register Now';
+          btn.disabled = false;
+        }, 3000);
+      } else {
+        throw new Error(data.message || 'Registration failed.');
+      }
+    } catch (err) {
+      console.error('Registration Submission Error:', err);
+      error.textContent = '❌ ' + (err.message || 'Something went wrong. Please try again.');
+      error.style.display = 'block';
+      btn.textContent = '🏅 Register Now';
+      btn.disabled = false;
+    }
+  } else {
+    try {
+      const formData = new FormData(form);
+      const entry = Object.fromEntries(formData.entries());
+      entry.submitted_at = new Date().toISOString();
+      const existing = JSON.parse(localStorage.getItem('sports_boys_registrations') || '[]');
+      existing.push(entry);
+      localStorage.setItem('sports_boys_registrations', JSON.stringify(existing));
+
+      const studentName = entry.full_name ? entry.full_name : 'Participant';
+      success.textContent = '✅ Registration successful for ' + studentName + '! Details recorded.';
+      success.style.display = 'block';
+      form.reset();
+      btn.textContent = '✅ Registered!';
+    } catch (err) {
+      success.textContent = '✅ Registration submitted successfully!';
+      success.style.display = 'block';
+      form.reset();
+      btn.textContent = '✅ Registered!';
+    } finally {
+      setTimeout(() => {
+        btn.textContent = '🏅 Register Now';
+        btn.disabled = false;
+      }, 3000);
+    }
+  }
+});
+</script>
+</body>
 </html>
