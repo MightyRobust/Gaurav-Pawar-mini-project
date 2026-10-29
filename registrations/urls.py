@@ -1,4 +1,3 @@
-# C:\Users\acer\bkend\registrations\urls.py
 from django.urls import path
 from .views import register_participant, contact_view
 

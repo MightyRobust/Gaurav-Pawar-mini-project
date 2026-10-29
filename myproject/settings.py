@@ -59,7 +59,7 @@ ROOT_URLCONF = 'myproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',  # ✅ Correct path
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'sports_updated'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
